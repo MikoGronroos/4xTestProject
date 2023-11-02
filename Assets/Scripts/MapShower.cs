@@ -7,7 +7,7 @@ public class MapShower : MonoBehaviour
     int width;
     int height;
 
-    Color32[] remapArr;
+    Color32[] mapArr;
     Texture2D paletteTex;
 
     Color32 prevColor;
@@ -23,19 +23,18 @@ public class MapShower : MonoBehaviour
         width = mainTex.width;
         height = mainTex.height;
 
-        var main2remap = new Dictionary<Color32, Color32>();
-        remapArr = new Color32[mainArr.Length];
+        var main = new Dictionary<Color32, Color32>();
+        mapArr = new Color32[mainArr.Length];
         int idx = 0;
         for(int i=0; i<mainArr.Length; i++){
-            var mainColor = mainArr[i];
-            if(!main2remap.ContainsKey(mainColor)){
-                var low = (byte)(idx % 256);
-                var high = (byte)(idx / 256);
-                main2remap[mainColor] = new Color32(low, high, 0, 255);
+            var mainColor = mainArr[i]; // takes the rgb value of the province
+            if (!main.ContainsKey(mainColor))
+            {
+                main[mainColor] = mainColor;
                 idx++;
             }
-            var remapColor = main2remap[mainColor];
-            remapArr[i] = remapColor;
+            var color = main[mainColor];
+            mapArr[i] = color;
         }
 
         var paletteArr = new Color32[256*256];
@@ -45,7 +44,7 @@ public class MapShower : MonoBehaviour
 
         var remapTex = new Texture2D(width, height, TextureFormat.RGBA32, false);
         remapTex.filterMode = FilterMode.Point;
-        remapTex.SetPixels32(remapArr);
+        remapTex.SetPixels32(mapArr);
         remapTex.Apply(false);
         material.SetTexture("_RemapTex", remapTex);
 
@@ -68,15 +67,15 @@ public class MapShower : MonoBehaviour
             int x = (int)Mathf.Floor(p.x) + width / 2;
             int y = (int)Mathf.Floor(p.y) + height / 2;
 
-            var remapColor = remapArr[x + y * width];
+            var color = mapArr[x + y * width];
 
-            if(!selectAny || !prevColor.Equals(remapColor)){
+            if(!selectAny || !prevColor.Equals(color)){
                 if(selectAny){
                     changeColor(prevColor, new Color32(255, 255, 255, 255));
                 }
                 selectAny = true;
-                prevColor = remapColor;
-                changeColor(remapColor, new Color32(50, 0, 255, 255));
+                prevColor = color;
+                changeColor(color, new Color32(50, 0, 255, 255));
                 paletteTex.Apply(false);
             }
         }
