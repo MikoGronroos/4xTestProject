@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Mapshower : MonoBehaviour
+public class MapShower : MonoBehaviour
 {
     int width;
     int height;
