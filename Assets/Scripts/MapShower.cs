@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class MapShower : MonoBehaviour
 {
+
+    [SerializeField] private ProvinceModel _model;
+
     int width;
     int height;
 
@@ -69,14 +72,20 @@ public class MapShower : MonoBehaviour
 
             var color = mapArr[x + y * width];
 
-            if(!selectAny || !prevColor.Equals(color)){
-                if(selectAny){
-                    changeColor(prevColor, new Color32(255, 255, 255, 255));
+            if (Input.GetMouseButtonDown(0))
+            {
+                if (!selectAny || !prevColor.Equals(color))
+                {
+                    if (selectAny)
+                    {
+                        changeColor(prevColor, new Color32(255, 255, 255, 255));
+                    }
+                    selectAny = true;
+                    prevColor = color;
+                    _model.CurrentlySelectedProvince = color;
+                    changeColor(color, new Color32(50, 0, 255, 255));
+                    paletteTex.Apply(false);
                 }
-                selectAny = true;
-                prevColor = color;
-                changeColor(color, new Color32(50, 0, 255, 255));
-                paletteTex.Apply(false);
             }
         }
     }
