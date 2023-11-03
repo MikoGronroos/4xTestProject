@@ -14,15 +14,12 @@ public class ProvinceCreator : MonoBehaviour
         string fs = provinces.text;
         string[] fLines = Regex.Split(fs, "\n");
 
-
-        Debug.Log(fLines.Length);
         for (int i = 0; i < fLines.Length; i++)
         {
             if (fLines[i] == "")
             {
                 continue;
             }
-            Debug.Log(fLines[i]);
             string valueLine = fLines[i];
             string[] values = Regex.Split(valueLine, ";");
             Province province = new Province { id = Int32.Parse(values[0]), name = values[4] };
@@ -32,7 +29,6 @@ public class ProvinceCreator : MonoBehaviour
                 _model.Provinces[key] = province;
             }
         }
-        Debug.Log(_model.Provinces.Count);
     }
 
 }

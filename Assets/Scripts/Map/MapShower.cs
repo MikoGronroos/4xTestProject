@@ -83,7 +83,6 @@ public class MapShower : MonoBehaviour
                     selectAny = true;
                     prevColor = color;
                     _model.CurrentlySelectedProvince = color;
-                    Debug.Log(_model.Provinces[color].name);
                     changeColor(color, new Color32(50, 0, 255, 255));
                     paletteTex.Apply(false);
                 }
