@@ -227,6 +227,7 @@ GameObject:
   - component: {fileID: 922549707}
   - component: {fileID: 922549706}
   - component: {fileID: 922549710}
+  - component: {fileID: 922549711}
   m_Layer: 0
   m_Name: Map
   m_TagString: Untagged
@@ -333,6 +334,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68bbfc4b689c6064da128dc3fedcd81b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _model: {fileID: 11400000, guid: 2ab072287f44ff147a1fb4fd11bc1d15, type: 2}
+--- !u!114 &922549711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 922549704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f45dab9cab6b6848a6f29ded4b93c41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  provinces: {fileID: 4900000, guid: 3584d0b87c542f14980c314a18f80b49, type: 3}
   _model: {fileID: 11400000, guid: 2ab072287f44ff147a1fb4fd11bc1d15, type: 2}
 --- !u!1 &963194225
 GameObject:
