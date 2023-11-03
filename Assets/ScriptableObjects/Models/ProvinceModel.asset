@@ -12,6 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0887fe385a196c74385d1b7ab4913b4a, type: 3}
   m_Name: ProvinceModel
   m_EditorClassIdentifier: 
-  CurrentlySelectedProvince:
-    serializedVersion: 2
-    rgba: 0
+  provinceSelectedEvent: {fileID: 11400000, guid: 8a99d362f1f0e714a8c4ae1b1dea2ae9, type: 2}

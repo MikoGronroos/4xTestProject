@@ -5,7 +5,10 @@ using UnityEngine;
 public class ProvinceModel : ScriptableObject
 {
 
-    public Color32 CurrentlySelectedProvince;
+    [SerializeField] private Province currentlySelectedProvince;
+    public Province CurrentlySelectedProvince { get { return currentlySelectedProvince; } set { currentlySelectedProvince = value; provinceSelectedEvent.Raise(currentlySelectedProvince); } }
+
+    [SerializeField] private ProvinceEventChannelSO provinceSelectedEvent;
 
     public Dictionary<Color32, Province> Provinces { get; set; } = new Dictionary<Color32, Province>();
 }

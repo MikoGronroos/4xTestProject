@@ -82,7 +82,7 @@ public class MapShower : MonoBehaviour
                     }
                     selectAny = true;
                     prevColor = color;
-                    _model.CurrentlySelectedProvince = color;
+                    _model.CurrentlySelectedProvince = _model.Provinces[color];
                     changeColor(color, new Color32(50, 0, 255, 255));
                     paletteTex.Apply(false);
                 }
