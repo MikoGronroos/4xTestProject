@@ -6,11 +6,15 @@ public class ProvinceCreator : MonoBehaviour
 {
 
     [SerializeField] private TextAsset provinces;
+    [SerializeField] private TextAsset provincesTransform;
 
-    [SerializeField] private ProvinceModel _model;
+    [SerializeField] private ProvinceConfig _model;
+    [SerializeField] private ProvincePositionsConfig _positions;
 
     private void Awake()
     {
+        #region Province Data
+
         string fs = provinces.text;
         string[] fLines = Regex.Split(fs, "\n");
 
@@ -29,6 +33,38 @@ public class ProvinceCreator : MonoBehaviour
                 _model.Provinces[key] = province;
             }
         }
+
+        #endregion
+
+        #region Province Transform Data
+
+
+        string data = provincesTransform.text;
+        string[] dataLines = Regex.Split(data, "\n");
+        string[] splitValues;
+        float x = 0;
+        float z = 0;
+        for (int i = 0; i < dataLines.Length; i++)
+        {
+            if (dataLines[i] == "")
+            {
+                continue;
+            }
+            if (Regex.Match(dataLines[i], "^[0-9]{0,4}={").Success)
+            {
+                int id = Int32.Parse(Regex.Match(dataLines[i], "^[0-9]{0,4}").Value);
+                if (Regex.Match(dataLines[i + 1], "position={").Success)
+                {
+                    splitValues = Regex.Split(dataLines[i + 2], " ");
+                    x = float.Parse(splitValues[2]);
+                    z = float.Parse(splitValues[3]);
+                }
+                _positions.ProvinceTransformData[id] = new ProvinceTransformData { Position = new Vector2(x,z) };
+            }
+        }
+
+        #endregion
+
     }
 
 }

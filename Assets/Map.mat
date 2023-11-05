@@ -24,19 +24,19 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 46610eb90c61f6546a446e3652c73260, type: 3}
+        m_Texture: {fileID: 2800000, guid: 5e0b86a24fb49444b80b65946385394e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _PaletteTex:
-        m_Texture: {fileID: 2800000, guid: 46610eb90c61f6546a446e3652c73260, type: 3}
+        m_Texture: {fileID: 2800000, guid: 5e0b86a24fb49444b80b65946385394e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _RemapTex:
-        m_Texture: {fileID: 2800000, guid: 46610eb90c61f6546a446e3652c73260, type: 3}
+        m_Texture: {fileID: 2800000, guid: 5e0b86a24fb49444b80b65946385394e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _TerrainTex:
-        m_Texture: {fileID: 2800000, guid: ad4e2021bbd99f844a155b160a540948, type: 3}
+        m_Texture: {fileID: 2800000, guid: a913f6529dbf2354daf44a332ea17ff4, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []

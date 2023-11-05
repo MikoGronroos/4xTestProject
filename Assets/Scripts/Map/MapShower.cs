@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
 public class MapShower : MonoBehaviour
 {
 
-    [SerializeField] private ProvinceModel _model;
+    [SerializeField] private ProvinceConfig _model;
+    [SerializeField] private ProvinceDataConfig _config;
+
+    [SerializeField] private ProvinceDataEventChannelSO _provinceDataEvent;
 
     int width;
     int height;
@@ -82,7 +86,8 @@ public class MapShower : MonoBehaviour
                     }
                     selectAny = true;
                     prevColor = color;
-                    _model.CurrentlySelectedProvince = _model.Provinces[color];
+                    var province = _model.Provinces[color];
+                    _provinceDataEvent.Raise(province.name, _config.GetProvinceData(province.id));
                     changeColor(color, new Color32(50, 0, 255, 255));
                     paletteTex.Apply(false);
                 }

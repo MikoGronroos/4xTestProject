@@ -2,8 +2,9 @@ using UnityEngine;
 
 public class ProvincePresenter : MonoBehaviour
 {
-    [SerializeField] private ProvinceEventChannelSO provinceSelectedEvent;
+    [SerializeField] private ProvinceDataEventChannelSO provinceSelectedEvent;
     [SerializeField] private ProvinceView view;
+    [SerializeField] private ProvincePositionsConfig _positions;
 
     private void OnEnable()
     {
@@ -15,8 +16,8 @@ public class ProvincePresenter : MonoBehaviour
         provinceSelectedEvent.Unregister(OnProvinceSelectedListener);
     }
 
-    private void OnProvinceSelectedListener(Province province)
+    private void OnProvinceSelectedListener(string name, ProvinceData provinceData)
     {
-        view.ProvinceSelected(province);
+        view.ProvinceSelected(name, provinceData);
     }
 }
