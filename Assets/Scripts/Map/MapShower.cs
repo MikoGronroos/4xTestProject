@@ -1,7 +1,12 @@
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting.FullSerializer;
+using System.Drawing;
 using UnityEngine;
+
+public enum MapMode
+{
+    Countries,
+    Areas
+}
 
 public class MapShower : MonoBehaviour
 {
@@ -10,6 +15,11 @@ public class MapShower : MonoBehaviour
     [SerializeField] private ProvinceDataConfig _config;
 
     [SerializeField] private ProvinceDataEventChannelSO _provinceDataEvent;
+
+    [SerializeField] private bool Creator;
+
+    [SerializeField] private MapMode mode;
+    [SerializeField] private CountryConfig countryConfig;
 
     int width;
     int height;
@@ -63,7 +73,30 @@ public class MapShower : MonoBehaviour
 
     }
 
-    // Update is called once per frame
+    [ContextMenu("Change map mode")]
+    public void ChangeMapMode()
+    {
+        switch (mode)
+        {
+            case MapMode.Countries:
+                foreach (var country in countryConfig.Countries)
+                {
+                    foreach (var province in country.Value.Provinces)
+                    {
+                        var prov = _config.GetProvinceData(province);
+                        int x = (int)Mathf.Floor(prov.ProvinceMovementPosition.x) + width / 2;
+                        int y = (int)Mathf.Floor(prov.ProvinceMovementPosition.y) + height / 2;
+                        var color = mapArr[x + y * width];
+                        changeColor(color, new Color32(0, 0, 255, 255));
+                        paletteTex.Apply(false);
+                    }
+                }
+                break;
+            case MapMode.Areas:
+                break;
+        }
+    }
+
     void Update()
     {
         var mousePos = Input.mousePosition;
@@ -87,8 +120,12 @@ public class MapShower : MonoBehaviour
                     selectAny = true;
                     prevColor = color;
                     var province = _model.Provinces[color];
+                    if (Creator)
+                    {
+                        _config.provinceDatas.Add(new ProvinceData { Id = province.id, ProvinceMovementPosition = hitInfo.point, ProvinceColor = color });
+                    }
                     _provinceDataEvent.Raise(province.name, _config.GetProvinceData(province.id));
-                    changeColor(color, new Color32(50, 0, 255, 255));
+                    changeColor(color, new Color32(0, 0, 0, 255));
                     paletteTex.Apply(false);
                 }
             }
@@ -98,7 +135,6 @@ public class MapShower : MonoBehaviour
     void changeColor(Color32 remapColor, Color32 showColor){
         int xp = remapColor[0];
         int yp = remapColor[1];
-
         paletteTex.SetPixel(xp, yp, showColor);
     }
 }

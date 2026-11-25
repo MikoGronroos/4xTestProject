@@ -808,6 +808,9 @@ MonoBehaviour:
   _model: {fileID: 11400000, guid: 23e75e241d9b0d64da4747834b934e16, type: 2}
   _config: {fileID: 11400000, guid: d66d07a44a729a2489e2f3e415d344b1, type: 2}
   _provinceDataEvent: {fileID: 11400000, guid: 8a99d362f1f0e714a8c4ae1b1dea2ae9, type: 2}
+  Creator: 0
+  mode: 0
+  countryConfig: {fileID: 11400000, guid: 8721626740c8c1644a84587daaf138e7, type: 2}
 --- !u!114 &922549711
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -13,5 +13,9 @@ MonoBehaviour:
   m_Name: ProvinceDataConfig
   m_EditorClassIdentifier: 
   provinceDatas:
-  - Id: 28
-    Population: 500
+  - Id: 1
+    ProvinceColor:
+      serializedVersion: 2
+      rgba: 4282393216
+    ProvinceMovementPosition: {x: 273.0491, y: 164.1191}
+    Population: 0

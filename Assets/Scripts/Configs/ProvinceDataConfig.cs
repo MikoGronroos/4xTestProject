@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,7 +6,7 @@ using UnityEngine;
 public class ProvinceDataConfig : ScriptableObject
 {
 
-    [SerializeField] private ProvinceData[] provinceDatas;
+    public List<ProvinceData> provinceDatas = new List<ProvinceData>();
 
     private Dictionary<int, ProvinceData> _provinceDatas { get; set; } = new Dictionary<int, ProvinceData>();
 
@@ -35,5 +34,7 @@ public class ProvinceDataConfig : ScriptableObject
 public class ProvinceData
 {
     public int Id;
+    public Color32 ProvinceColor;
+    public Vector2 ProvinceMovementPosition;
     public int Population;
 }
